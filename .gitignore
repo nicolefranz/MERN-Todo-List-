@@ -1,0 +1,144 @@
+# Node modules
+node_modules
+/.pnp
+.pnp.js
+
+# Build directories
+/build
+/dist
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Coverage directory used by testing tools
+/coverage
+
+# Production
+/build
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode
+.idea
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Parcel-bundler cache
+.cache
+
+# SvelteKit build directory
+/.svelte-kit
+
+# Next.js build output
+/.next
+
+# Nuxt.js build output
+/.nuxt
+
+# Gatsby files
+/.cache/
+/public
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+/.serverless
+
+# FuseBox cache
+/.fusebox
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional stylelint cache
+.stylelintcache
+
+# Temporary files
+tmp
+temp
+*.tmp
+*.temp
+
+# Local Babel config
+.babelrc.local
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test
+.env.production
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build output
+.nuxt
+
+# Rollup cache
+.rollup.cache
+
+# Sapper build output
+__sapper__
+
+# svelte.js build output
+public/build
+
+# Azure Pipelines
+.azure-pipelines.yml
+# Uncomment if you have a build pipeline running
+# node_modules/
+
+# Optional eslint cache
+.eslintcache
+
+# Storybook build output
+.out
+
+# Compiled Cypress tests
+.cypress/videos/
+.cypress/screenshots/
+
+# Gridsome build output
+.gridsome/cache/
+.gridsome/server/
+
+# Solid.js build output
+.solid/
+
+# Remotion
+.cache/remotion
+
+# Snowpack
+web_modules/
+snowpack.lock.json

@@ -1,15 +1,29 @@
 const express = require("express");
-
 const router = express.Router();
+const { getConnectedClient } = require("./database");
+
+const getCollection = () => {
+    const client = getConnectedClient();
+    const collection = client.db("todosdb").collection("todos");
+    return collection;
+}
 
 //GET - get the info 
-router.get("/todos", (req, res) => {
+router.get("/todos", async (req, res) => {
+    const collection = getCollection();
+    const todos = await collection.find({}).toArray();
+
     res.status(200).json({ mssg: "GET REQUEST TO /api/todos" });
 });
 
 //POST - create request 
-router.post("/todos", (req, res) => {
-    res.status(201).json({ mssg: "POST REQUEST TO /api/todos" });
+router.post("/todos", async (req, res) => {
+    const collection = getCollection();
+    const { todo } = req.body;
+
+    const newTodo = await collection.insertOne({ todo, status: false });
+
+    res.status(201).json({ todo, status: false, _id: newTodo.insertedId });
 });
 
 //DELETE - delete the info

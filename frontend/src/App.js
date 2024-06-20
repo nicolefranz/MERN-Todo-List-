@@ -1,25 +1,57 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import Todo from "./Todo";
 
 export default function App() {
-  const [message, setMessage] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [content, setContent] = useState("");
 
-  useEffect (() => {
-    async function getTodos(){
+  useEffect(() => {
+    async function getTodos() {
       const res = await fetch("/api/todos");
       const todos = await res.json();
 
-      setMessage(todos.mssg);
-      //console.log(todos);
-    }
+      setTodos(todos);
+    };
+
     getTodos();
-  }, [])
-  
+  }, []);
+
+  const createNewTodo = async (e) => {
+    e.preventDefault();
+    if (content.length > 3) {
+      const res = await fetch("/api/todos", {
+        method: "POST",
+        body: JSON.stringify({ todo: content }),  
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const newTodo = await res.json();
+
+			setContent("");
+      setTodos([...todos, newTodo]);
+    }
+  };
+
   return (
     <main className="container">
-      <h1>MERN Todo List</h1>
-      <p>{message}</p>
+      <h1 className="title">MERN To-Do List </h1>
+      <form className="form" onSubmit={createNewTodo}>
+        <input type="text" 
+        value={content} 
+        onChange={(e) => setContent(e.target.value)} 
+        placeholder="Enter a new to do..." 
+        className="form__input"
+        required/>
+        <button type="submit">Create Todo</button>
+      </form>
+      <div className="todos">
+        {(todos.length > 0) &&
+          todos.map((todo) => (
+            <Todo key={todo._id} todo={todo} setTodos={setTodos}/>
+          ))
+        }
+      </div>
     </main>
   );
 }
-
-

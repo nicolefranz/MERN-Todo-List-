@@ -43,7 +43,7 @@ export default function App() {
         placeholder="Enter a new to do..." 
         className="form__input"
         required/>
-        <button type="submit">Create Todo</button>
+        <button className="form_button" type="submit">Create Todo</button>
       </form>
       <div className="todos">
         {(todos.length > 0) &&

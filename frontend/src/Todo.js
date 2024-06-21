@@ -1,4 +1,4 @@
-export default function Todo(props){
+export default function Todo(props) {
     const { todo, setTodos } = props;
 
     const updateTodo = async (todoId, todoStatus) => {
@@ -24,16 +24,35 @@ export default function Todo(props){
         }
     };
 
+    const deleteTodo = async (todoId) => {
+        const res = await fetch(`/api/todos/${todoId}`, {
+            method: "DELETE"
+        });
+        const json = await res.json();
+        
+        if (json.acknowledged) {
+            props.setTodos(currentTodos => {
+                return currentTodos
+                    .filter((currentTodo) => (currentTodo._id !== todoId));
+            });
+        }
+    }
+
     return (
         <div className="todo">
-              <p>{todo.todo}</p>
-              <div>
-                <button className="todo__status" 
-                onClick={() => updateTodo(props.todo._id, props.todo.status)}
+            <p>{todo.todo}</p>
+            <div className="mutations">
+                <button className="todo__status"
+                    onClick={() => updateTodo(props.todo._id, props.todo.status)}
                 >
-                  {(todo.status) ? "☑" : "☐"}
+                    {(todo.status) ? "☑" : "☐"}
                 </button>
-              </div>
+                <button
+                    className="todo__delete"
+                    onClick={() => deleteTodo(todo._id)}>
+                    🗑️
+                </button>
             </div>
+        </div>
     )
 }

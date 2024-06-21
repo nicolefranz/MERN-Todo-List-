@@ -3,6 +3,7 @@ require("dotenv").config(); // Load environment variables from .env file
 const express = require("express");
 const cors = require("cors");
 const { connectToMongoDB } = require("./database");
+const path = require("path");
 
 // Create Express application
 const app = express();
@@ -10,6 +11,12 @@ const app = express();
 // Middleware
 app.use(cors()); // Enable CORS for all requests
 app.use(express.json()); // Parse JSON request bodies
+
+//build the mern app 
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/", (req, res) =>{
+  res.sendFile(path.join(__dirname, "build/index.html"));
+})
 
 // Routes
 const router = require("./routes");

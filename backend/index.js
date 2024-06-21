@@ -1,5 +1,6 @@
 // Import required modules
 require("dotenv").config(); // Load environment variables from .env file
+const cors = require('cors');
 const express = require("express");
 const { connectToMongoDB } = require("./database");
 const path = require("path");
@@ -7,9 +8,17 @@ const path = require("path");
 // Create Express application
 const app = express();
 
-//build the mern app 
+// Configure CORS
+const allowedOrigins = process.env.FRONTEND_URL || 'http://localhost:3000';
+const corsOptions = {
+  origin: allowedOrigins,
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
+// Serve static files from the React app
 app.use(express.static(path.join(__dirname, "build")));
-app.get("/", (req, res) =>{
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
 })
 
@@ -40,4 +49,3 @@ async function startServer() {
 
 // Call startServer function to start the server
 startServer();
-

@@ -12,7 +12,7 @@ This To-Do List application helps users manage their tasks efficiently. Users ca
 
 **Authentication**: JWT tokens
 
-**Styling**: Tailwind CSS
+**Styling**: Bootstrap CSS
 
 **Deployment**: Render
 

@@ -1,6 +1,9 @@
 # Todo List 
 This To-Do List application helps users manage their tasks efficiently. Users can add new tasks, mark tasks as complete, edit existing tasks, and delete tasks they no longer need. 
 
+# Tutorial Video 
+This project was developed following the tutorial available [here](https://youtu.be/giXuiotopO0)
+
 ## Project Link [here](https://mern-todo-list-bory.onrender.com/)
 
 ## Tech Stack
